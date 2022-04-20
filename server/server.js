@@ -3,9 +3,11 @@ import express from "express";
 import dotenv from "dotenv";
 import goalRouter from "./routes/goalRoute.js";
 import { errorHandler } from "./middlewares/errorMiddleware.js";
+import { connectDatabase } from "./config/db.js";
 
-dotenv.config();
+connectDatabase();
 const app = express();
+dotenv.config();
 const PORT = process.env.PORT || 2000;
 
 app.use(errorHandler);
