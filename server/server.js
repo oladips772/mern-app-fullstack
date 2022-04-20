@@ -2,11 +2,13 @@
 import express from "express";
 import dotenv from "dotenv";
 import goalRouter from "./routes/goalRoute.js";
+import { errorHandler } from "./middlewares/errorMiddleware.js";
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 2000;
 
+app.use(errorHandler);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/api/goals", goalRouter);
