@@ -1,9 +1,10 @@
 /** @format */
-import express from "express";
-import dotenv from "dotenv";
-import goalRouter from "./routes/goalRoute.js";
-import { errorHandler } from "./middlewares/errorMiddleware.js";
-import { connectDatabase } from "./config/db.js";
+const express = require("express");
+const dotenv = require("dotenv");
+const goalRouter = require("./routes/goalRoute.js")
+const  errorHandler  = require("./middlewares/errorMiddleware");
+const  connectDatabase  = require("./config/db.js");
+
 
 connectDatabase();
 const app = express();
