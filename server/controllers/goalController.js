@@ -24,6 +24,7 @@ const setGoals = asyncHandler(async (req, res) => {
   res.status(200).json(goal);
 });
 
+
 //* @update goals
 //* @route PUT api/goals
 // *@access private
