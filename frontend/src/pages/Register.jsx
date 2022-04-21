@@ -11,7 +11,13 @@ function Register() {
     password2: "",
   });
 
-  const onChange = (e) => {};
+  
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  };
 
   const { name, email, password, password2 } = formData;
 
@@ -26,24 +32,32 @@ function Register() {
             type="text"
             placeholder="Name"
             value={name}
+            id="name"
+            name="name"
             onChange={onChange}
           />
           <input
             type="email"
             placeholder="Email"
             value={email}
+            id="email"
+            name="email"
             onChange={onChange}
           />
           <input
             type="password"
             placeholder="Password"
             value={password}
+            id="password"
+            name="password"
             onChange={onChange}
           />
           <input
             type="password"
             placeholder="Confirm Password"
             value={password2}
+            id="password2"
+            name="password2"
             onChange={onChange}
           />
           <button>REGISTER</button>

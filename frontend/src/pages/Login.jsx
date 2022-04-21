@@ -3,13 +3,19 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaSignInAlt } from "react-icons/fa";
 
+
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const onChange = (e) => {};
+  const onChange = (e) => {
+     setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  };
 
   const { email, password } = formData;
   return (
@@ -22,6 +28,8 @@ function Login() {
           <input
             type="email"
             placeholder="Email"
+            id="email"
+            name="email"
             value={email}
             onChange={onChange}
             required
@@ -30,6 +38,8 @@ function Login() {
             type="password"
             placeholder="Password"
             value={password}
+            id="password"
+            name="password"
             onChange={onChange}
             required
           />
