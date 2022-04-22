@@ -37,7 +37,6 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("user not created");
   }
-
 });
 
 // * @login user
@@ -60,13 +59,16 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-
 // * @get user
 // * @route GET api/user
 // * @access public
-const getUsers = asyncHandler(async (req, res) => {
-  const users = await User.find();
-  res.status(200).json(users);
+const getUser = asyncHandler(async (req, res) => {
+  const { _id, name, email } = await User.findById(req.user.id);
+  res.status(200).json({
+    id: _id,
+    name,
+    email,
+  });
 });
 
 const generateToken = (id) => {
@@ -75,4 +77,4 @@ const generateToken = (id) => {
   });
 };
 
-module.exports = { getUsers, registerUser, loginUser, generateToken };
+module.exports = { getUser, registerUser, loginUser, generateToken };
