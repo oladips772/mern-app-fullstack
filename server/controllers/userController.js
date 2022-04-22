@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 // * @register user
-// * @route POST api/users
+// * @route PUT api/users
 // * access public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
@@ -31,17 +31,17 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
     throw new Error("user not created");
   }
 
-  res.send("created succesfully");
 });
 
 // * @login user
-// * @route PUT api/users
+// * @route POST api/users
 // * access public
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -59,6 +59,7 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("invalid credentials");
   }
 });
+
 
 // * @get user
 // * @route GET api/user

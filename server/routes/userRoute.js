@@ -11,7 +11,7 @@ const {
 
 
 userRouter.get("/", getUsers);
-userRouter.post("/register", registerUser);
-userRouter.put("/login", loginUser);
+userRouter.put("/register", registerUser);
+userRouter.post("/login", loginUser);
 
 module.exports = userRouter;
